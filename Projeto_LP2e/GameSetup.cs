@@ -3,13 +3,13 @@ namespace Projeto_LP2e
 {
     public class GameSetup
     {
-        public string X { get; set}
-        public string Y { get; set}
-        public string NHumans { get; set}
-        public string NZombies { get; set}
-        public string NPlayHumans { get; set}
-        public string NPlayZombies { get; set}
-        public string MaxTurns { get; set}
+        public string X { get; }
+        public string Y { get; }
+        public string NHumans { get; }
+        public string NZombies { get; }
+        public string NPlayHumans { get; }
+        public string NPlayZombies { get; }
+        public string MaxTurns { get; }
 
         public GameSetup(string[] args)
         {

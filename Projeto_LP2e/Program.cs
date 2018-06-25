@@ -6,7 +6,9 @@ namespace Projeto_LP2e
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            GameSetup gs = new GameSetup(args);
+            Manager manager = new Manager(gs);
+            manager.Play();
         }
     }
 }
