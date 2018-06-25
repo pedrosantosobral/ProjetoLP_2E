@@ -3,8 +3,8 @@ namespace Projeto_LP2e
 {
     public class GameSetup
     {
-        public int X { get; } = -1;
-        public int Y { get; }
+        public int Row { get; }
+        public int Col { get; }
         public int NHumans { get; }
         public int NZombies { get; }
         public int NPlayHumans { get; }
@@ -20,11 +20,11 @@ namespace Projeto_LP2e
                 switch(args[i])
                 {
                     case "-x":
-                        X = Convert.ToInt32(args[i + 1]);
+                        Row = Convert.ToInt32(args[i + 1]);
                         verify += 1 << 0;
                         break;
                     case "-y":
-                        Y = Convert.ToInt32(args[i + 1]);
+                        Col = Convert.ToInt32(args[i + 1]);
                         verify += 1 << 1;
                         break;
                     case "-z":
@@ -47,6 +47,8 @@ namespace Projeto_LP2e
                         MaxTurns = Convert.ToInt32(args[i + 1]);
                         verify += 1 << 6;
                         break;
+                    default:
+                        throw new ArgumentException($"Invalid Argument ({args[i]})");
                 }
             }
 

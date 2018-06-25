@@ -19,6 +19,8 @@ namespace Projeto_LP2e
             Console.WriteLine(gs.NPlayZombies);
             Console.WriteLine(gs.NPlayHumans);
             Console.WriteLine(gs.MaxTurns);
+
+            World w = new World(gs);
         }
     }
 }
