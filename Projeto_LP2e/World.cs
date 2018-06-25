@@ -12,6 +12,7 @@ namespace Projeto_LP2e
             grid = new IGameObject[gs.Row , gs.Col];
             agents = new IGameObject[gs.NZombies + gs.NHumans];
             int row, col;
+            int playableCount = 0;
 
             for (int i = 0; i < gs.NHumans; i++)
             {
@@ -19,8 +20,36 @@ namespace Projeto_LP2e
                 {
                     row = rand.Next(0, gs.Row - 1);
                     col = rand.Next(0, gs.Col - 1);
-                } 
-                while (grid[row, col] is Agent_AI  || grid[row, col] is Agent_Play);
+                }
+                while (grid[row, col] is Agent_AI || grid[row, col] is Agent_Play);
+
+                if (playableCount >= gs.NPlayHumans)
+                {
+                    grid[row, col] = new Agent_AI(Type.Human, row, col, i);
+                }
+                else
+                {
+                    grid[row, col] = new Agent_Play(Type.Human, row, col, i);
+                }
+            }
+
+            for (int i = gs.NHumans ; i < gs.NHumans + gs.NZombies; i++)
+            {
+                do
+                {
+                    row = rand.Next(0, gs.Row - 1);
+                    col = rand.Next(0, gs.Col - 1);
+                }
+                while (grid[row, col] is Agent_AI || grid[row, col] is Agent_Play);
+
+                if (playableCount >= gs.NPlayZombies)
+                {
+                    grid[row, col] = new Agent_AI(Type.Zombie, row, col, i);
+                }
+                else
+                {
+                    grid[row, col] = new Agent_Play(Type.Zombie, row, col, i);
+                }
             }
 
         }
@@ -30,7 +59,7 @@ namespace Projeto_LP2e
             {
                 for (int j = 0; j < grid.GetLength(1); j++)
                 {
-                    
+                    grid[i, j] = new Empty();  
                 }
             }
         }

@@ -1,0 +1,22 @@
+﻿<Properties StartupConfiguration="{82E87D4F-7AF0-4674-9365-0C53C27F36B7}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="World.cs">
+    <Files>
+      <File FileName="Program.cs" Line="7" Column="7" />
+      <File FileName="Type.cs" Line="9" Column="2" />
+      <File FileName="GameSetup.cs" Line="1" Column="1" />
+      <File FileName="IGameObject.cs" Line="1" Column="1" />
+      <File FileName="Manager.cs" Line="1" Column="1" />
+      <File FileName="World.cs" Line="1" Column="1" />
+      <File FileName="Agent_AI.cs" Line="1" Column="1" />
+      <File FileName="Agent_Play.cs" Line="1" Column="1" />
+      <File FileName="Empty.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Projeto__LP2e PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
