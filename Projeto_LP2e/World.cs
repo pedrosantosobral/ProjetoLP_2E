@@ -3,8 +3,8 @@ namespace Projeto_LP2e
 {
     public class World
     {
-        private IGameObject[,] grid;
-        private Agent[] agents;
+        public IGameObject[,] grid;
+        public Agent[] agents;
         private Random rand = new Random();
 
         public World(GameSetup gs)
