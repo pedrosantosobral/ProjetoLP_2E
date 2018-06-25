@@ -3,42 +3,56 @@ namespace Projeto_LP2e
 {
     public class GameSetup
     {
-        public string X { get; }
-        public string Y { get; }
-        public string NHumans { get; }
-        public string NZombies { get; }
-        public string NPlayHumans { get; }
-        public string NPlayZombies { get; }
-        public string MaxTurns { get; }
+        public int X { get; } = -1;
+        public int Y { get; }
+        public int NHumans { get; }
+        public int NZombies { get; }
+        public int NPlayHumans { get; }
+        public int NPlayZombies { get; }
+        public int MaxTurns { get; }
 
         public GameSetup(string[] args)
         {
+            int verify = 0;
+
             for (int i = 0; i < args.Length; i+=2)
             {
                 switch(args[i])
                 {
                     case "-x":
-                        X = args[i + 1];
+                        X = Convert.ToInt32(args[i + 1]);
+                        verify += 1 << 0;
                         break;
                     case "-y":
-                        Y = args[i + 1];
+                        Y = Convert.ToInt32(args[i + 1]);
+                        verify += 1 << 1;
                         break;
                     case "-z":
-                        NZombies = args[i + 1];
+                        NZombies = Convert.ToInt32(args[i + 1]);
+                        verify += 1 << 2;
                         break;
                     case "-h":
-                        NHumans = args[i + 1];
+                        NHumans = Convert.ToInt32(args[i + 1]);
+                        verify += 1 << 3;
                         break;
                     case "-H":
-                        NPlayHumans = args[i + 1];
+                        NPlayHumans = Convert.ToInt32(args[i + 1]);
+                        verify += 1 << 4;
                         break;
                     case "-Z":
-                        NPlayZombies = args[i + 1];
+                        NPlayZombies = Convert.ToInt32(args[i + 1]);
+                        verify += 1 << 5;
                         break;
                     case "-t":
-                        MaxTurns = args[i + 1];
+                        MaxTurns = Convert.ToInt32(args[i + 1]);
+                        verify += 1 << 6;
                         break;
                 }
+            }
+
+            if (verify != 0x7f)
+            {
+                throw new ArgumentException($"Invalid command line argument ({verify:x}).");
             }
         }
     }
