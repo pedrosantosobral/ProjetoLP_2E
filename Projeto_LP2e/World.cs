@@ -4,13 +4,13 @@ namespace Projeto_LP2e
     public class World
     {
         private IGameObject[,] grid;
-        private IGameObject[] agents;
+        private Agent[] agents;
         private Random rand = new Random();
 
         public World(GameSetup gs)
         {
             grid = new IGameObject[gs.Row , gs.Col];
-            agents = new IGameObject[gs.NZombies + gs.NHumans];
+            agents = new Agent[gs.NZombies + gs.NHumans];
             int row, col;
             int playableCount = 0;
 
@@ -21,7 +21,7 @@ namespace Projeto_LP2e
                     row = rand.Next(0, gs.Row - 1);
                     col = rand.Next(0, gs.Col - 1);
                 }
-                while (grid[row, col] is Agent_AI || grid[row, col] is Agent_Play);
+                while (grid[row, col] is Agent);
 
                 if (playableCount >= gs.NPlayHumans)
                 {
@@ -40,7 +40,7 @@ namespace Projeto_LP2e
                     row = rand.Next(0, gs.Row - 1);
                     col = rand.Next(0, gs.Col - 1);
                 }
-                while (grid[row, col] is Agent_AI || grid[row, col] is Agent_Play);
+                while (grid[row, col] is Agent);
 
                 if (playableCount >= gs.NPlayZombies)
                 {
