@@ -22,13 +22,11 @@ namespace Projeto_LP2e
             string state = null;
             if(Type == Type.Human)
             {
-                if (IsPlayable) state = "H";
-                else state = "h";
+                 state = "h";
             }
-            else(Type == Type.Zombie)
+            else if(Type == Type.Zombie)
             {
-                if (IsPlayable) state = "Z";
-                else state = "z";
+                 state = "z";
             }
 
             return $"{state}{Id:x2}"; 

@@ -16,5 +16,20 @@ namespace Projeto_LP2e
             Id = id;
 
         }
+
+        public override string ToString()
+        {
+            string state = null;
+            if (Type == Type.Human)
+            {
+                state = "H";
+            }
+            else if (Type == Type.Zombie)
+            {
+                state = "Z";
+            }
+
+            return $"{state}{Id:x2}";
+        }
     }
 } 

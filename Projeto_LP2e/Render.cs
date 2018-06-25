@@ -22,8 +22,8 @@ namespace Projeto_LP2e
         {
             string state = null;
             if (go is Empty) state = ".";
-            else if (go is Agent_Play) state = ((Agent_Play)go).ToString();
-            else if (go is Agent_AI) state = ((Agent_AI)go).ToString();
+            else if (go is Agent_Play) state = $"{((Agent_Play)go)}";
+            else if (go is Agent_AI) state = $"{((Agent_AI)go)}";
 
             return state;
         }

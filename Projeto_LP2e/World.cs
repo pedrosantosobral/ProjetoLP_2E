@@ -11,6 +11,7 @@ namespace Projeto_LP2e
         {
             grid = new IGameObject[gs.Row , gs.Col];
             agents = new Agent[gs.NZombies + gs.NHumans];
+            PopulateGrid();
             int row, col;
             int playableCount = 0;
 
