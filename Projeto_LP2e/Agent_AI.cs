@@ -31,5 +31,35 @@ namespace Projeto_LP2e
 
             return $"{state}{Id:x2}"; 
 		}
+
+        public override void Move()
+        {
+            int randMove = 0;
+            char move =' ';
+            randMove = rand.Next(0, 4);
+
+            if (randMove == 0) move = 'w';
+            else if (randMove == 1) move = 'a';
+            else if (randMove == 2) move = 's';
+            else if (randMove == 3) move = 'd';
+
+            switch (move)
+            {
+                case 'w':
+                    Row -= 1;
+                    break;
+                case 'a':
+                    Col -= 1;
+                    break;
+                case 's':
+                    Row += 1;
+                    break;
+                case 'd':
+                    Col += 1;
+                    break;
+            }
+            Console.ReadKey();
+        }
+
 	}
 }

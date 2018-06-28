@@ -15,18 +15,26 @@ namespace Projeto_LP2e
         public void Play ()
         {
             World w = new World(gs);
+            render.View(w.grid);
+
             for (int i = 0; i < gs.MaxTurns; i++)
             {
                 shuffle.ShuffleAgents(w.agents);
-                render.View(w.grid);
 
-                foreach(Agent a in w.agents)
+                foreach (Agent ag in w.agents)
                 {
-                    Console.WriteLine(a.Id);
+                    ag.Move();
+                    render.View(w.grid);
+           
                 }
 
                 Console.ReadKey();
             }
+        }
+
+        public void RestrictPosition()
+        {
+            
         }
     }
 }
