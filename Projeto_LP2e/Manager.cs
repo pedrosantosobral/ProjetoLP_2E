@@ -31,6 +31,7 @@ namespace Projeto_LP2e
                     RestrictPosition(ag);
                     PlaceAgent(ag, oldCol, oldRow);
                     render.View(w.grid);
+                    render.ShowPlayingAgent(ag);
                 }
 
                 Console.ReadKey();

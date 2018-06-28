@@ -27,5 +27,21 @@ namespace Projeto_LP2e
 
             return state;
         }
+
+        public void ShowPlayingAgent(Agent ag)
+        {
+            if(ag is Agent_AI)
+            {
+                Console.WriteLine($"* Next to Play: {ag} (AI Controlled)");
+            }
+            else
+            {
+                Console.WriteLine($"* Next to Play: {ag} (Player Controlled)");
+            }
+        }
+        public void ShowPossibleDirections(Agent ag)
+        {
+            
+        }
     }
 }
