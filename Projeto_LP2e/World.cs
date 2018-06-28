@@ -31,8 +31,10 @@ namespace Projeto_LP2e
                 else
                 {
                     grid[row, col] = new Agent_Play(Type.Human, row, col, i);
+                    playableCount++;
                 }
             }
+            playableCount = 0;
 
             for (int i = gs.NHumans ; i < gs.NHumans + gs.NZombies; i++)
             {
@@ -50,6 +52,7 @@ namespace Projeto_LP2e
                 else
                 {
                     grid[row, col] = new Agent_Play(Type.Zombie, row, col, i);
+                    playableCount++;
                 }
             }
             PopulateArrayToShuffle();

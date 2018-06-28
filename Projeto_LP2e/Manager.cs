@@ -6,6 +6,8 @@ namespace Projeto_LP2e
         private readonly GameSetup gs;
         private readonly Render render = new Render();
         private readonly Shuffle shuffle = new Shuffle();
+        private World w;
+
         public Manager(GameSetup gs)
         {
             this.gs = gs;
@@ -13,7 +15,7 @@ namespace Projeto_LP2e
 
         public void Play ()
         {
-            World w = new World(gs);
+            w = new World(gs);
             render.View(w.grid);
 
             for (int i = 0; i < gs.MaxTurns; i++)
@@ -27,6 +29,7 @@ namespace Projeto_LP2e
 
                     ag.Move();
                     RestrictPosition(ag);
+                    PlaceAgent(ag, oldCol, oldRow);
                     render.View(w.grid);
                 }
 
@@ -37,14 +40,33 @@ namespace Projeto_LP2e
         public void RestrictPosition(Agent ag)
         {
             if (ag.Col < 0) ag.Col = 0;
-            if (ag.Col > ag.Col -1) ag.Col = ag.Col - 1 ;
+            if (ag.Col > gs.Col - 1) ag.Col = gs.Col - 1 ;
             if (ag.Row < 0) ag.Row = 0;
-            if (ag.Row > ag.Row - 1) ag.Row = ag.Row - 1;
+            if (ag.Row > gs.Row - 1) ag.Row = gs.Row - 1;
 
         }
 
-        public void PlaceAgent()
+        public void PlaceAgent(Agent ag, int oldCol, int oldRow)
         {
+            int destRow = ag.Row;
+            int destCol = ag.Col;
+
+            if (w.grid[destRow, destCol] is Agent)
+            {
+                ag.Col = oldCol;
+                ag.Row = oldRow;
+
+                if ((ag.Type == Type.Zombie) && (w.grid[destRow, destCol]
+                                                 as Agent).Type == Type.Human)
+                {
+                    (w.grid[destRow, destCol] as Agent).Type = Type.Zombie;
+                }
+            }
+            else
+            {
+                w.grid[destRow, destCol] = ag;
+                w.grid[oldRow, oldCol] = new Empty();
+            }
         }
     }
 

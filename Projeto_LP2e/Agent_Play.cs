@@ -3,8 +3,6 @@ namespace Projeto_LP2e
 {
     public class Agent_Play : Agent 
     {
-        public Type Type { get; set; }
-        public bool IsPlayable { get; } = true;
 
         public Agent_Play(Type type, int row, int col, int id)
         {
