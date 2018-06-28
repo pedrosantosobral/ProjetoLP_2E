@@ -52,7 +52,20 @@ namespace Projeto_LP2e
                     grid[row, col] = new Agent_Play(Type.Zombie, row, col, i);
                 }
             }
+            PopulateArrayToShuffle();
 
+        }
+        public void PopulateArrayToShuffle()
+        {
+            int index = 0;
+            foreach(IGameObject go in grid)
+            {
+                if(go is Agent)
+                {
+                    agents[index] = go as Agent;
+                    index++;
+                }
+            }
         }
         public void PopulateGrid()
         {
