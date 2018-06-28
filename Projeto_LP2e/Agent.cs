@@ -4,6 +4,8 @@ namespace Projeto_LP2e
     public abstract class Agent : IGameObject
     {
         public int Id { get; protected set; }
+        public int Row { get; set; }
+        public int Col { get; set; }
 
         protected readonly Random rand = new Random();
 

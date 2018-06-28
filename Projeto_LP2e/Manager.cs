@@ -6,7 +6,6 @@ namespace Projeto_LP2e
         private readonly GameSetup gs;
         private readonly Render render = new Render();
         private readonly Shuffle shuffle = new Shuffle();
-
         public Manager(GameSetup gs)
         {
             this.gs = gs;
@@ -23,18 +22,31 @@ namespace Projeto_LP2e
 
                 foreach (Agent ag in w.agents)
                 {
+                    int oldCol = ag.Col;
+                    int oldRow = ag.Row;
+
                     ag.Move();
+                    RestrictPosition(ag);
                     render.View(w.grid);
-           
                 }
 
                 Console.ReadKey();
             }
         }
 
-        public void RestrictPosition()
+        public void RestrictPosition(Agent ag)
         {
-            
+            if (ag.Col < 0) ag.Col = 0;
+            if (ag.Col > ag.Col -1) ag.Col = ag.Col - 1 ;
+            if (ag.Row < 0) ag.Row = 0;
+            if (ag.Row > ag.Row - 1) ag.Row = ag.Row - 1;
+
+        }
+
+        public void PlaceAgent()
+        {
         }
     }
+
+
 }
