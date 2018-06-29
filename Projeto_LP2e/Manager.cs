@@ -1,7 +1,11 @@
 ﻿using System;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 namespace Projeto_LP2e
 {
-    public class Manager
+    [Serializable]
+    public class Manager : ISerializable
     {
         private readonly GameSetup gs;
         private readonly Render render;
@@ -10,10 +14,18 @@ namespace Projeto_LP2e
 
         public Manager(GameSetup gs)
         {
+            if(File.Exists(gs.Savefile))
+            {
+                LoadGame();
+            }
             this.gs = gs;
             render = new Render(gs, w);
         }
 
+        public Manager(SerializationInfo info, StreamingContext context)
+        {
+            w = (World)info.GetValue("World", typeof(World));  
+        }
         public void Play ()
         {
             w = new World(gs);
@@ -23,6 +35,10 @@ namespace Projeto_LP2e
 
             for (int i = 0; i < gs.MaxTurns; i++)
             {
+                if(gs.Savefile != null)
+                {
+                    SaveGame();
+                }
                 shuffle.ShuffleAgents(w.agents);
 
                 foreach (Agent ag in w.agents)
@@ -251,6 +267,24 @@ namespace Projeto_LP2e
             else if (enemyAg.Row < ag.Row) ag.Move("W");
             else if (enemyAg.Col > ag.Col) ag.Move("D");
             else if (enemyAg.Col < ag.Col) ag.Move("A");
+        }
+        public void SaveGame()
+        {
+            Stream stream = File.Open(gs.Savefile, FileMode.Open);
+            BinaryFormatter bf = new BinaryFormatter();
+            bf.Serialize(stream, w);
+            stream.Close();
+        }
+        public void LoadGame()
+        {
+            Stream stream = File.Open(gs.Savefile, FileMode.Open);
+            BinaryFormatter bf = new BinaryFormatter();
+            w = (World)bf.Deserialize(stream);
+            stream.Close(); 
+        }
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("World", w);
         }
     }
 

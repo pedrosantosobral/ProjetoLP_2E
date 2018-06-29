@@ -1,6 +1,7 @@
 ﻿using System;
 namespace Projeto_LP2e
 {
+    [Serializable]
     public class Agent_Play : Agent 
     {
 

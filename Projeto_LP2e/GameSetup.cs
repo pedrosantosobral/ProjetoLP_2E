@@ -1,6 +1,7 @@
 ﻿using System;
 namespace Projeto_LP2e
 {
+    [Serializable]
     public class GameSetup
     {
         public int Row { get; }
@@ -10,6 +11,7 @@ namespace Projeto_LP2e
         public int NPlayHumans { get; }
         public int NPlayZombies { get; }
         public int MaxTurns { get; }
+        public string Savefile { get; set; } = null;
 
         public GameSetup(string[] args)
         {
@@ -46,6 +48,9 @@ namespace Projeto_LP2e
                     case "-t":
                         MaxTurns = Convert.ToInt32(args[i + 1]);
                         verify += 1 << 6;
+                        break;
+                    case "-s":
+                        Savefile = args[i + 1];
                         break;
                     default:
                         throw new ArgumentException($"Invalid Argument ({args[i]})");

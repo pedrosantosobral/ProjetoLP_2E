@@ -1,6 +1,7 @@
 ﻿using System;
 namespace Projeto_LP2e
 {
+    [Serializable]
     public class Agent_AI : Agent
     {
         public Agent_AI(Type type, int row, int col, int id)
