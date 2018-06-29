@@ -23,7 +23,7 @@ namespace Projeto_LP2e
             else if(Type == Type.Zombie)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                state = "\0466";
+                state = "\u0466";
             }
 
             return $"{state}{Id:x2}"; 

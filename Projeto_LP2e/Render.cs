@@ -21,6 +21,7 @@ namespace Projeto_LP2e
                 {
                     state = State(grid[i, j]);
                     Console.Write(state);
+                    Console.ResetColor();
                     Console.Write("\t");
                 }
                 Console.Write("\n\n\n");
