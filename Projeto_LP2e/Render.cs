@@ -42,11 +42,17 @@ namespace Projeto_LP2e
         {
             if(ag is Agent_AI)
             {
-                Console.WriteLine($"* Next to Play: {ag} (AI Controlled)");
+                Console.Write($"* Next to Play: ");
+                Console.Write($"{ag}");
+                Console.ResetColor();
+                Console.WriteLine(" (AI Controlled)");
             }
             else
             {
-                Console.WriteLine($"* Next to Play: {ag} (Player Controlled)");
+                Console.Write($"* Next to Play: ");
+                Console.Write($"{ag}");
+                Console.ResetColor();
+                Console.WriteLine(" (Player Controlled)");
             }
         }
 

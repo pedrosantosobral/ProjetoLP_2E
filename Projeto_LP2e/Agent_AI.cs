@@ -12,22 +12,6 @@ namespace Projeto_LP2e
 
         }
 
-		public override string ToString()
-		{
-            string state = null;
-            if(Type == Type.Human)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                state = "\u03EE";
-            }
-            else if(Type == Type.Zombie)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                state = "\u0466";
-            }
-
-            return $"{state}{Id:x2}"; 
-		}
 
         public override void Move()
         {
@@ -56,6 +40,23 @@ namespace Projeto_LP2e
                     break;
             }
             Console.ReadKey();
+        }
+
+        public override string ToString()
+        {
+            string state = null;
+            if (Type == Type.Human)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                state = "\u0426";
+            }
+            else if (Type == Type.Zombie)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                state = "\u0466";
+            }
+
+            return $"{state}{Id:x2}";
         }
 
 	}
