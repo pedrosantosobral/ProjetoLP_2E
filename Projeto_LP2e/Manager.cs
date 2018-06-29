@@ -28,6 +28,7 @@ namespace Projeto_LP2e
                     int oldCol = ag.Col;
                     int oldRow = ag.Row;
 
+                    render.ShowLegend();
                     render.ShowPlayingAgent(ag);
                     CheckPossibleDirections(ag);
                     ag.Move();
