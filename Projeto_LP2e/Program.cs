@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Projeto_LP2e
 {
@@ -6,6 +7,9 @@ namespace Projeto_LP2e
     {
         static void Main(string[] args)
         {
+
+            Console.OutputEncoding = Encoding.UTF8;
+
             try
             {
                 GameSetup gs = new GameSetup(args);

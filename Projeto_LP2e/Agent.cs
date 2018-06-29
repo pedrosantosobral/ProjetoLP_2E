@@ -10,6 +10,6 @@ namespace Projeto_LP2e
 
         protected readonly Random rand = new Random();
 
-        public abstract void Move();
+        public abstract void Move(string move);
     }
 }

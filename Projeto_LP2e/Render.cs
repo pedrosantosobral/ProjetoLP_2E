@@ -11,10 +11,13 @@ namespace Projeto_LP2e
             this.gs = gs;
             this.w = w;
         }
-        public void View(IGameObject[,] grid)
+        public void View(IGameObject[,] grid, int turn)
         {
             string state = null;
 
+            Console.Clear();
+            Console.WriteLine($"Actual turn: {turn}");
+            Console.WriteLine();
             for (int i = 0; i < grid.GetLength(0);i++)
             {
                 for (int j = 0; j < grid.GetLength(1);j++)
@@ -93,6 +96,7 @@ namespace Projeto_LP2e
             if (input == 'A') Console.Write(" A (West),");
             if (input == 'S') Console.Write(" S (South),");
             if (input == 'D') Console.Write(" D (East),");
+            Console.WriteLine();
         }
 
         public void ShowKeyMessage()

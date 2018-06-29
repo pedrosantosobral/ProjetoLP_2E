@@ -13,18 +13,8 @@ namespace Projeto_LP2e
 
         }
 
-
-        public override void Move()
-        {
-            string move = null;
-
-            do
-            {
-                move = Console.ReadLine().ToLower();
-            }
-            while (move != "w" && move != "a" && move != "s" && move != "d");
-           
-
+        public override void Move(string move)
+        {          
             switch (move)
             {
                 case "w":

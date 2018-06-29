@@ -12,34 +12,25 @@ namespace Projeto_LP2e
 
         }
 
-
-        public override void Move()
+        public override void Move(string move)
         {
-            int randMove = 0;
-            char move =' ';
-            randMove = rand.Next(0, 4);
-
-            if (randMove == 0) move = 'w';
-            else if (randMove == 1) move = 'a';
-            else if (randMove == 2) move = 's';
-            else if (randMove == 3) move = 'd';
+            move = move.ToLower();
 
             switch (move)
             {
-                case 'w':
+                case "w":
                     Row -= 1;
                     break;
-                case 'a':
+                case "a":
                     Col -= 1;
                     break;
-                case 's':
+                case "s":
                     Row += 1;
                     break;
-                case 'd':
+                case "d":
                     Col += 1;
                     break;
             }
-            Console.ReadKey();
         }
 
         public override string ToString()
