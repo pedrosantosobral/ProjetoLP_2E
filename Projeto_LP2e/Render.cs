@@ -3,6 +3,14 @@ namespace Projeto_LP2e
 {
     public class Render
     {
+        private readonly GameSetup gs;
+        private readonly World w;
+
+        public Render(GameSetup gs, World w)
+        {
+            this.gs = gs;
+            this.w = w;
+        }
         public void View(IGameObject[,] grid)
         {
             string state = null;
@@ -39,9 +47,25 @@ namespace Projeto_LP2e
                 Console.WriteLine($"* Next to Play: {ag} (Player Controlled)");
             }
         }
-        public void ShowPossibleDirections(Agent ag)
+
+        public void ShowPossibleDirections(IGameObject go, string dir)
         {
-            
+            if(go is Agent_AI)
+            {
+                Console.WriteLine($"\t- There is a {((Agent_AI)go).Type} " +
+                                  $"{((Agent_AI)go).Id:x2} to the {dir} (AI).");
+            }
+            else if (go is Agent_Play)
+            {
+                Console.WriteLine($"\t- There is a {((Agent_Play)go).Type} " +
+                                  $"{((Agent_Play)go).Id:x2} to the {dir} (Playable).");
+            }
+            else if (go is Empty)
+            {
+                Console.WriteLine($"\t- The path is free to the {dir}");
+            }
         }
+
+
     }
 }

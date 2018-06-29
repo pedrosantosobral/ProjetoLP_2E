@@ -4,13 +4,14 @@ namespace Projeto_LP2e
     public class Manager
     {
         private readonly GameSetup gs;
-        private readonly Render render = new Render();
+        private readonly Render render;
         private readonly Shuffle shuffle = new Shuffle();
         private World w;
 
         public Manager(GameSetup gs)
         {
             this.gs = gs;
+            render = new Render(gs, w);
         }
 
         public void Play ()
@@ -27,11 +28,14 @@ namespace Projeto_LP2e
                     int oldCol = ag.Col;
                     int oldRow = ag.Row;
 
+                    render.ShowPlayingAgent(ag);
+                    CheckPossibleDirections(ag);
                     ag.Move();
                     RestrictPosition(ag);
                     PlaceAgent(ag, oldCol, oldRow);
                     render.View(w.grid);
-                    render.ShowPlayingAgent(ag);
+
+
                 }
 
                 Console.ReadKey();
@@ -68,6 +72,53 @@ namespace Projeto_LP2e
                 w.grid[destRow, destCol] = ag;
                 w.grid[oldRow, oldCol] = new Empty();
             }
+        }
+
+        public void CheckPossibleDirections(Agent ag)
+        {
+            bool[] directions;
+            string dir = null;
+
+            directions = RetrievePossibleDirections(ag);
+
+            if (directions[0])
+            {
+                dir = "North";
+                render.ShowPossibleDirections(w.grid[ag.Row - 1, ag.Col], dir);
+            }
+
+            if (directions[1])
+            {
+                dir = "West";
+                render.ShowPossibleDirections(w.grid[ag.Row, ag.Col - 1], dir);
+            }
+
+            if (directions[2])
+            {
+                dir = "South";
+                render.ShowPossibleDirections(w.grid[ag.Row + 1, ag.Col], dir);
+            }
+
+            if (directions[3])
+            {
+                dir = "East";
+                render.ShowPossibleDirections(w.grid[ag.Row, ag.Col + 1], dir);
+            }
+        }
+
+        public bool[] RetrievePossibleDirections(Agent ag)
+        {
+            bool[] directions = new bool[4];
+            //w (north)
+            directions[0] = (ag.Row - 1 >= 0);
+            // a (west)
+            directions[1] = (ag.Col - 1 >= 0);
+            //s (south)
+            directions[2] = (ag.Row + 1 < gs.Row);
+            // d (east)
+            directions[3] = (ag.Col + 1 < gs.Col);
+
+            return directions;
         }
     }
 
