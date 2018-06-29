@@ -65,6 +65,14 @@ namespace Projeto_LP2e
                 Console.WriteLine($"\t- The path is free to the {dir}");
             }
         }
+        public void ShowPossibleMovements(char input)
+        {
+            Console.WriteLine("* Which way to go?");
+            if (input == 'W') Console.Write(" W (North),");
+            if (input == 'A') Console.Write(" A (West),");
+            if (input == 'S') Console.Write(" S (South),");
+            if (input == 'D') Console.Write(" D (East),");
+        }
 
 
     }

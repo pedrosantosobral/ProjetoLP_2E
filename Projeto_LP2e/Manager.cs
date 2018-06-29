@@ -104,6 +104,9 @@ namespace Projeto_LP2e
                 dir = "East";
                 render.ShowPossibleDirections(w.grid[ag.Row, ag.Col + 1], dir);
             }
+
+            CheckPossibleMovements(ag , directions);
+
         }
 
         public bool[] RetrievePossibleDirections(Agent ag)
@@ -119,6 +122,28 @@ namespace Projeto_LP2e
             directions[3] = (ag.Col + 1 < gs.Col);
 
             return directions;
+        }
+
+        public void CheckPossibleMovements(Agent ag, bool[] directions)
+        {
+            if (directions[0] && (w.grid[ag.Row - 1, ag.Col]) is Empty)
+            {
+                render.ShowPossibleMovements('W');
+            }
+            if (directions[1] && (w.grid[ag.Row, ag.Col - 1]) is Empty)
+            {
+                render.ShowPossibleMovements('A');
+            }
+            if (directions[2] && (w.grid[ag.Row + 1, ag.Col]) is Empty)
+            {
+                render.ShowPossibleMovements('S');
+            }
+            if (directions[3] && (w.grid[ag.Row, ag.Col + 1]) is Empty)
+            {
+                render.ShowPossibleMovements('D');
+            }
+
+
         }
     }
 
