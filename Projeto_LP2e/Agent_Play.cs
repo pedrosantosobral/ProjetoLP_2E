@@ -18,11 +18,13 @@ namespace Projeto_LP2e
             string state = null;
             if (Type == Type.Human)
             {
-                state = "H";
+                Console.ForegroundColor = ConsoleColor.Green;
+                state = "\u00B1";
             }
             else if (Type == Type.Zombie)
             {
-                state = "Z";
+                Console.ForegroundColor = ConsoleColor.Red;
+                state = "\u04C1";
             }
 
             return $"{state}{Id:x2}";
