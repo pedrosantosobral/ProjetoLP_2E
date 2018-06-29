@@ -43,6 +43,7 @@ namespace Projeto_LP2e
             Console.WriteLine("Legend:");
             Console.WriteLine("Human: AI - \u0426 | Playable - \u0429");
             Console.WriteLine("Zombie: AI - \u0466 | Playable - \u04C1");
+            Console.WriteLine();
         }
 
         public void ShowPlayingAgent(Agent ag)
