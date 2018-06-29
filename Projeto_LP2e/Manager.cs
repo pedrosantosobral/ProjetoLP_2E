@@ -33,12 +33,11 @@ namespace Projeto_LP2e
                     ag.Move();
                     RestrictPosition(ag);
                     PlaceAgent(ag, oldCol, oldRow);
+                    Console.Clear();
                     render.View(w.grid);
 
 
                 }
-
-                Console.ReadKey();
             }
         }
 
@@ -79,33 +78,41 @@ namespace Projeto_LP2e
             bool[] directions;
             string dir = null;
 
-            directions = RetrievePossibleDirections(ag);
-
-            if (directions[0])
+            if (ag is Agent_Play)
             {
-                dir = "North";
-                render.ShowPossibleDirections(w.grid[ag.Row - 1, ag.Col], dir);
-            }
+                directions = RetrievePossibleDirections(ag);
 
-            if (directions[1])
+                if (directions[0])
+                {
+                    dir = "North";
+                    render.ShowPossibleDirections(w.grid[ag.Row - 1, ag.Col], dir);
+                }
+
+                if (directions[1])
+                {
+                    dir = "West";
+                    render.ShowPossibleDirections(w.grid[ag.Row, ag.Col - 1], dir);
+                }
+
+                if (directions[2])
+                {
+                    dir = "South";
+                    render.ShowPossibleDirections(w.grid[ag.Row + 1, ag.Col], dir);
+                }
+
+                if (directions[3])
+                {
+                    dir = "East";
+                    render.ShowPossibleDirections(w.grid[ag.Row, ag.Col + 1], dir);
+                }
+
+                render.ShowWayToGoQuestion();
+                CheckPossibleMovements(ag, directions);
+            }
+            else
             {
-                dir = "West";
-                render.ShowPossibleDirections(w.grid[ag.Row, ag.Col - 1], dir);
+                render.ShowKeyMessage();
             }
-
-            if (directions[2])
-            {
-                dir = "South";
-                render.ShowPossibleDirections(w.grid[ag.Row + 1, ag.Col], dir);
-            }
-
-            if (directions[3])
-            {
-                dir = "East";
-                render.ShowPossibleDirections(w.grid[ag.Row, ag.Col + 1], dir);
-            }
-
-            CheckPossibleMovements(ag , directions);
 
         }
 

@@ -14,6 +14,7 @@ namespace Projeto_LP2e
         public void View(IGameObject[,] grid)
         {
             string state = null;
+
             for (int i = 0; i < grid.GetLength(0);i++)
             {
                 for (int j = 0; j < grid.GetLength(1);j++)
@@ -65,15 +66,23 @@ namespace Projeto_LP2e
                 Console.WriteLine($"\t- The path is free to the {dir}");
             }
         }
-        public void ShowPossibleMovements(char input)
+
+        public void ShowWayToGoQuestion()
         {
             Console.WriteLine("* Which way to go?");
+        }
+
+        public void ShowPossibleMovements(char input)
+        {
             if (input == 'W') Console.Write(" W (North),");
             if (input == 'A') Console.Write(" A (West),");
             if (input == 'S') Console.Write(" S (South),");
             if (input == 'D') Console.Write(" D (East),");
         }
 
-
+        public void ShowKeyMessage()
+        {
+            Console.WriteLine("Press any key to continue...");
+        }
     }
 }
