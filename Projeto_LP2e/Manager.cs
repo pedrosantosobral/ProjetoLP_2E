@@ -11,35 +11,45 @@ namespace Projeto_LP2e
         private readonly Render render;
         private readonly Shuffle shuffle = new Shuffle();
         private World w;
+        private int turn = 1;
+        private bool loadedGame = false;
+        private int nhumans;
 
         public Manager(GameSetup gs)
         {
-            if(File.Exists(gs.Savefile))
-            {
-                LoadGame();
-            }
             this.gs = gs;
             render = new Render(gs, w);
+            w = new World(gs);
+            nhumans = gs.NHumans;
         }
 
         public Manager(SerializationInfo info, StreamingContext context)
         {
-            w = (World)info.GetValue("World", typeof(World));  
+            w = (World)info.GetValue("World", typeof(World));
+            turn = (int)info.GetValue("Turn", typeof(int));
+            nhumans = (int)info.GetValue("NHumans", typeof(int));
+            loadedGame = true;
         }
         public void Play ()
         {
-            w = new World(gs);
             string move = null;
-            int turn = 1;
             render.View(w.grid, turn);
 
             for (int i = 0; i < gs.MaxTurns; i++)
             {
-                if(gs.Savefile != null)
+                if (loadedGame)
+                {
+                    loadedGame = false;
+                }
+                else
+                {
+                    shuffle.ShuffleAgents(w.agents);
+                }
+
+                if(gs.Savefile != null && turn > 1)
                 {
                     SaveGame();
                 }
-                shuffle.ShuffleAgents(w.agents);
 
                 foreach (Agent ag in w.agents)
                 {
@@ -68,10 +78,29 @@ namespace Projeto_LP2e
 
                     RestrictPosition(ag);
                     PlaceAgent(ag, oldCol, oldRow);
+
+                    if (nhumans == 0)
+                    {
+                        render.ShowZombieWinMessage();
+                        Environment.Exit(1);
+                    }
+
                     render.View(w.grid, turn);
                 }
                 turn++;
                 render.View(w.grid, turn);
+
+                if (turn > gs.MaxTurns)
+                {
+                    foreach (Agent ag in w.agents)
+                    {
+                        if (ag.Type == Type.Human)
+                        {
+                            render.ShowHumanWinMessage();
+                            Environment.Exit(1);
+                        }
+                    }
+                }
             }
         }
 
@@ -239,7 +268,6 @@ namespace Projeto_LP2e
                     }
                 }
             }
-            Console.WriteLine($"{radius}");
             Console.ReadKey();
         }
 
@@ -273,6 +301,8 @@ namespace Projeto_LP2e
             Stream stream = File.Open(gs.Savefile, FileMode.Open);
             BinaryFormatter bf = new BinaryFormatter();
             bf.Serialize(stream, w);
+            bf.Serialize(stream, turn);
+            bf.Serialize(stream, nhumans);
             stream.Close();
         }
         public void LoadGame()
@@ -280,11 +310,15 @@ namespace Projeto_LP2e
             Stream stream = File.Open(gs.Savefile, FileMode.Open);
             BinaryFormatter bf = new BinaryFormatter();
             w = (World)bf.Deserialize(stream);
+            turn = (int)bf.Deserialize(stream);
+            nhumans = (int)bf.Deserialize(stream);
             stream.Close(); 
         }
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("World", w);
+            info.AddValue("Turn", turn);
+            info.AddValue("NHumans", nhumans);
         }
     }
 

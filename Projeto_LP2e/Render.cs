@@ -103,5 +103,17 @@ namespace Projeto_LP2e
         {
             Console.WriteLine("Press any key to continue...");
         }
+
+        public void ShowHumanWinMessage()
+        {
+            Console.Clear();
+            Console.WriteLine("Humans have survived!");
+        }
+
+        public void ShowZombieWinMessage()
+        {
+            Console.Clear();
+            Console.WriteLine("Too bad. Zombies took over.");
+        }
     }
 }
