@@ -1,6 +1,9 @@
 ﻿using System;
 namespace Projeto_LP2e
 {
+    /// <summary>
+    /// Fisher Yates shuffle.
+    /// </summary>
     public class Shuffle
     {
         private Random rand = new Random();
