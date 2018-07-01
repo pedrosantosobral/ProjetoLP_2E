@@ -139,7 +139,9 @@ namespace Projeto_LP2e
                     {
                         //Show Zombies win message.
                         render.ShowZombieWinMessage();
+
                         Environment.Exit(1);
+
                     }
                     //Render the game view.
                     render.View(w.grid, turn);
@@ -212,6 +214,7 @@ namespace Projeto_LP2e
                                                  as Agent).Type == Type.Human)
                 {
                     (w.grid[destRow, destCol] as Agent).Type = Type.Zombie;
+                    nhumans--;
                 }
             }
             //places the agent in the new coordinates and add an Empty game object
