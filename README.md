@@ -16,7 +16,7 @@ Pedro: <p>
 - Fez a verificação do movimento dos agentes para não irem para fora da grid. <p>
 - Começou a visualização do jogo. <p>
 - Fez o save game e adicionou comentários. <p>
-_ Pesquisou os unicodes a ser usados. <p>
+- Pesquisou os unicodes a ser usados. <p>
 
 Joana: <p>
 - Criou a interface IGameObject a classe World, Manager e Empty; <p>
@@ -25,7 +25,7 @@ Joana: <p>
 - Fez o código para o movimento dos agentes e colocou-os a mexer na visualização. <p>
 - Fez a vizinhança de Von Neumann. <p>
 - Fez as verificações de vitória. <p>
-- Fez a correção de erros e testes gerais do programa. <p>.
+- Fez a correção de erros e testes gerais do programa. <p>
 - Fez o diagrama UML. <p>
 
 ### Solução:
