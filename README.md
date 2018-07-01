@@ -109,9 +109,9 @@ break;
 ```
 
 ##### Diagrama UML:
-![UML](UML.svg)
+![UML](https://i.imgur.com/0hfjVMV.png)
 ##### Fluxograma:
-![Flowchart](Flowchart.svg)
+![Flowchart](https://i.imgur.com/qFUidXz.png)
 
 ### Conclusões
 Com este projeto melhorámos os nossos conhecimentos de c#.
