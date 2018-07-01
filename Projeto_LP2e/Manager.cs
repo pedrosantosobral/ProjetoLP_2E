@@ -430,7 +430,7 @@ namespace Projeto_LP2e
         /// </summary>
         public void SaveGame()
         {
-            Stream stream = File.Open(gs.Savefile, FileMode.Open);
+            Stream stream = File.Open(gs.Savefile, FileMode.Create);
             BinaryFormatter bf = new BinaryFormatter();
             bf.Serialize(stream, w);
             bf.Serialize(stream, turn);
